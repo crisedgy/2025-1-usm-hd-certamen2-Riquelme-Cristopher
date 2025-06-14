@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Comunas</title>
+</head>
+<body>
+    <h1>Listado de Comunas</h1>
+    <a href="{% url 'nueva_comuna' %}">Crear nueva comuna</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad de Habitantes</th>
+                <th>Tasa de Vulnerabilidad</th>
+                <th>Fecha de Fundación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comuna in comunas %}
+            <tr>
+                <td>{{ comuna.nombre }}</td>
+                <td>{{ comuna.cantidad_habitantes }}</td>
+                <td>{{ comuna.tasa_de_vulnerabilidad }}</td>
+                <td>{{ comuna.fecha_de_fundacion }}</td>
+                <td>
+                    <a href="{% url 'editar_comuna' comuna.pk %}">Editar</a> |
+                    <a href="{% url 'eliminar_comuna' comuna.pk %}">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No hay comunas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

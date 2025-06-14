@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Comuna</title>
+</head>
+<body>
+    <h1>¿Estás seguro que deseas eliminar la comuna "{{ comuna.nombre }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+    </form>
+    <a href="{% url 'listado_comunas' %}">Cancelar</a>
+</body>
+</html>
